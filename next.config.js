@@ -6,13 +6,12 @@ const withMDX = require("@next/mdx")({
     // https://github.com/remarkjs/remark-gfm#install
     remarkPlugins: [],
     rehypePlugins: [],
-    // If you use `MDXProvider`, uncomment the following line.
-    providerImportSource: "@mdx-js/react",
   },
 });
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: { appDir: true, mdxRs: true },
   // Configure pageExtensions to include md and mdx
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   // Optionally, add any other Next.js config below
