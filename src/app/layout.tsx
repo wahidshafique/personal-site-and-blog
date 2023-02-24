@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import { Metadata } from "next";
-import { Open_Sans } from "@next/font/google";
+import { Open_Sans } from "next/font/google";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 

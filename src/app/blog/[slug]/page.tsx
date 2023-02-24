@@ -16,16 +16,31 @@ interface PageProps {
   };
 }
 
-const getDynamicComponent = async (slug: string) => {
-  const component = dynamicImport(() => import(`./${slug}.mdx`), {
-    ssr: true,
-  });
-  return component;
+const getDynamicComponent = (slug: string) => {
+  let meta = {};
+  const Component = dynamicImport(
+    () =>
+      import(`./${slug}.mdx`).then((e) => {
+        console.log(e.meta);
+        meta = e.meta;
+        return e;
+      }),
+    {
+      ssr: true,
+    }
+  );
+  console.log(meta);
+  return {
+    Component,
+    meta,
+  };
 };
 
 export default async function Page({ params }: PageProps) {
   const { slug } = params;
-  const DynamicComponent = await getDynamicComponent(slug);
+  const { Component: DynamicComponent, meta: BlogMeta } =
+    await getDynamicComponent(slug);
+  console.log(23, BlogMeta);
 
   return (
     <>
