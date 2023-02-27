@@ -10,10 +10,10 @@ export default function Home() {
     <>
       <main className={styles.main}>
         <h1>Wahid Shafique</h1>
-        Hi, I am a web dev working in Toronto. I like movies and stuff. Reach
-        out to me if you need anything!
+        Hi, I am a web dev working in Toronto. Reach out to me if you need
+        anything!
         <div>
-          <p>List of pages</p>
+          <p>List of pages: </p>
           <ul>
             {blogPages.map((b) => (
               <li key={b.path}>

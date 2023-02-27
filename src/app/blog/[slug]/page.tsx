@@ -16,36 +16,43 @@ interface PageProps {
   };
 }
 
-const getDynamicComponent = (slug: string) => {
-  let meta = {};
-  const Component = dynamicImport(
-    () =>
-      import(`./${slug}.mdx`).then((e) => {
-        console.log(e.meta);
-        meta = e.meta;
-        return e;
-      }),
-    {
-      ssr: true,
-    }
-  );
-  console.log(meta);
-  return {
-    Component,
-    meta,
-  };
+const getDynamicComponent = async (slug: string) => {
+  const p: Promise<any> = new Promise((res, rej) => {
+    dynamicImport(
+      import(`./${slug}.mdx`)
+        .then((e) => {
+          return e;
+        })
+        .then((e) => {
+          res({
+            Component: e.default,
+            meta: e.meta,
+          });
+          return e;
+        }),
+      {
+        ssr: true,
+      }
+    );
+  });
+
+  return await p;
 };
 
 export default async function Page({ params }: PageProps) {
   const { slug } = params;
-  const { Component: DynamicComponent, meta: BlogMeta } =
+  const { Component: DynamicComponent, meta: blogMeta } =
     await getDynamicComponent(slug);
-  console.log(23, BlogMeta);
 
   return (
-    <>
-      <p className={styles.title}>{slug}</p>
-      <DynamicComponent />
-    </>
+    <div className={styles.blogWrapper}>
+      <a href="/">back</a>
+      <article>
+        <DynamicComponent />
+      </article>
+      <footer>
+        <p>Created: {blogMeta.created}</p>
+      </footer>
+    </div>
   );
 }

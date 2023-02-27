@@ -1,3 +1,10 @@
 .title {
   text-decoration: underline;
 }
+
+.blogWrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 650px;
+  padding-bottom: 100px;
+}
