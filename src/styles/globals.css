@@ -2,19 +2,26 @@
   --paddingSmall: 8px;
   --paddingMedium: 16px;
   --paddingLarge: 32px;
-
-  --text: hsl(0, 0, 0);
 }
 
 @media (max-width: 768px) {
   :root {
-    --paddingLarge: 10px;
+    --paddingSmall: 4px;
+    --paddingMedium: 8px;
+    --paddingLarge: 12px;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-  }
+body {
+  --text: hsl(0, 0, 0);
+  --surface: hsl(0, 0%, 80%);
+  --bg: white;
+}
+
+body:has(button[data-visual-mode="dark"]) {
+  --text: hsl(0deg 0% 100% / 0.8);
+  --bg: hsl(100deg 100% 0% / 0.9);
+  --surface: hsl(0, 0%, 20%);
 }
 
 /*
@@ -31,8 +38,9 @@
 */
 * {
   margin: 0;
-  line-height: calc(1em + 0.725rem);
+  line-height: calc(1em + 0.5rem);
   -webkit-font-smoothing: antialiased;
+  color: var(--text);
 }
 
 /*
@@ -53,6 +61,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   padding: var(--paddingLarge);
+  background-color: var(--bg);
 }
 
 /*
@@ -111,6 +120,17 @@ ul {
   padding-left: var(--paddingLarge);
 }
 
+nav {
+  display: flex;
+}
+
+.primary-btn {
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  margin-left: auto;
+}
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -120,8 +140,9 @@ ul {
 /* https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/  */
 /* TODO: make it a little more inline with overall design as it comes together */
 blockquote {
-  background: #f9f9f9;
-  border-left: 10px solid #ccc;
+  background: var(--surface);
+  border-left: 10px solid;
+  border-color: var(--text);
   margin: 1.5em 10px;
   padding: 0.5em 10px;
   quotes: "\201C""\201D""\2018""\2019";

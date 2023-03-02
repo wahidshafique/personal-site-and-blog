@@ -2,6 +2,7 @@ import dynamicImport from "next/dynamic";
 import getBlogPages from "@/app/getBlogPages";
 export const dynamic = "error";
 export const dynamicParams = false;
+import Link from "next/link";
 
 import styles from "@/styles/Blog.module.css";
 
@@ -46,7 +47,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <div className={styles.blogWrapper}>
-      <a href="/">back</a>
+      <Link href="/">back</Link>
       <article>
         <DynamicComponent />
       </article>

@@ -1,3 +1,4 @@
+import DarkLightModeDecider from "@/components/DarkLightModeDecider";
 import "@/styles/globals.css";
 import { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
@@ -10,7 +11,12 @@ export default function RootLayout({ children }: { children: any }) {
   return (
     <>
       <html lang="en" className={openSans.className}>
-        <body>{children}</body>
+        <body>
+          <nav>
+            <DarkLightModeDecider />
+          </nav>
+          {children}
+        </body>
       </html>
     </>
   );
