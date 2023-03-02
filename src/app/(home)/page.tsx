@@ -1,11 +1,10 @@
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
-import getBlogPages from "./getBlogPages";
+import getBlogPages from "@/app/getBlogPages";
 
 export default function Home() {
   const blogPages = getBlogPages();
-  console.log(blogPages);
   return (
     <>
       <main className={styles.main}>

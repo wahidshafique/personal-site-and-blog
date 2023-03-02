@@ -1,4 +1,3 @@
-import DarkLightModeDecider from "@/components/DarkLightModeDecider";
 import "@/styles/globals.css";
 import { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
@@ -6,17 +5,13 @@ import { Open_Sans } from "next/font/google";
 const openSans = Open_Sans({ subsets: ["latin"] });
 
 /** TODO: */
-export default function RootLayout({ children }: { children: any }) {
+export default function RootLayout({ children, ...rest }: { children: any }) {
   // Yes, this is not exactly following or allowing for nextjs optimization; but it fits my use case
+  console.log(children);
   return (
     <>
       <html lang="en" className={openSans.className}>
-        <body>
-          <nav>
-            <DarkLightModeDecider />
-          </nav>
-          {children}
-        </body>
+        <body>{children}</body>
       </html>
     </>
   );

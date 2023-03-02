@@ -19,7 +19,6 @@ function DarkLightModeDecider() {
     );
   }, []);
   const [currentVisualMode, setCurrentVisualMode] = useState(visualModes[0]);
-  console.log(currentVisualMode);
   return (
     <button
       data-visual-mode={currentVisualMode.name}
