@@ -167,3 +167,18 @@ blockquote:before {
 blockquote p {
   display: inline;
 }
+
+/** mdx stuff **/
+
+.code-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--paddingLarge);
+}
+
+.lang-tag {
+  display: flex;
+  margin-left: auto;
+  background-color: var(--bg);
+  padding: 4px 8px;
+}

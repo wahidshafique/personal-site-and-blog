@@ -9,12 +9,12 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 const CustomCodeBlock = ({ children }: any) => {
   const [noop, lang] = children.props.className.split("language-");
   return (
-    <>
-      {lang}
+    <div className="code-wrapper">
+      <strong className="lang-tag">{lang}</strong>
       <SyntaxHighlighter wrapLongLines language={lang}>
         {children.props.children}
       </SyntaxHighlighter>
-    </>
+    </div>
   );
 };
 
