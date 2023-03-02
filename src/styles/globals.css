@@ -181,4 +181,6 @@ blockquote p {
   margin-left: auto;
   background-color: var(--bg);
   padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
 }

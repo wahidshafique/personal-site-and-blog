@@ -50,7 +50,7 @@ export default async function Page({ params }: PageProps) {
         <DynamicComponent />
       </article>
       <footer>
-        <p>Created: {blogMeta.created}</p>
+        <p>Created: {blogMeta?.created || "Timeless"}</p>
       </footer>
     </div>
   );

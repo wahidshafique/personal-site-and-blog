@@ -9,8 +9,9 @@ export default function Home() {
     <>
       <main className={styles.main}>
         <h1>Wahid Shafique</h1>
-        Hi, I am a web dev working in Toronto. Reach out to me if you need
-        anything!
+        Hi, I am a web dev working in Toronto.{" "}
+        <a href="mailto:wahidshafique42@gmail.com">Reach out to me</a> if you
+        need anything!
         <div>
           <p>List of pages: </p>
           <ul>
