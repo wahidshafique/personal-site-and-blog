@@ -5,8 +5,9 @@ const visualModes = ["light", "dark"];
 
 // sort of a canary element that sets the initial mode of our app
 export default function DarkLightModeDecider() {
+  const isBrowser = () => typeof window !== "undefined";
   const [currentVisualMode, setCurrentVisualMode] = useState(
-    window.matchMedia("(prefers-color-scheme: dark)").matches
+    isBrowser() && window.matchMedia("(prefers-color-scheme: dark)").matches
       ? visualModes[1]
       : visualModes[0]
   );
