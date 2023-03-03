@@ -7,7 +7,6 @@ const openSans = Open_Sans({ subsets: ["latin"] });
 /** TODO: */
 export default function RootLayout({ children, ...rest }: { children: any }) {
   // Yes, this is not exactly following or allowing for nextjs optimization; but it fits my use case
-  console.log(children);
   return (
     <>
       <html lang="en" className={openSans.className}>

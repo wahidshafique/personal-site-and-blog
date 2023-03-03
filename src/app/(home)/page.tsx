@@ -15,11 +15,14 @@ export default function Home() {
         <div>
           <p>List of pages: </p>
           <ul>
-            {blogPages.map((b) => (
-              <li key={b.path}>
-                <Link href={b.path}>{b.fileName}</Link>
-              </li>
-            ))}
+            {blogPages.map((b) => {
+              console.log(b);
+              return (
+                <li key={b.path}>
+                  <Link href={b.path}>{b.fileName}</Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </main>

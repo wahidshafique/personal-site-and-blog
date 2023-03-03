@@ -12,10 +12,13 @@ const visualModes = [
 // sort of a canary element that sets the initial mode of our app
 function DarkLightModeDecider() {
   useEffect(() => {
+    const userSelectedMode = localStorage.getItem("visualMode") || null;
+    const matchedMode = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? visualModes[0]
+      : visualModes[1];
     setCurrentVisualMode(
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? visualModes[0]
-        : visualModes[1]
+      visualModes.find((e) => e.name === userSelectedMode) || matchedMode
     );
   }, []);
   const [currentVisualMode, setCurrentVisualMode] = useState(visualModes[0]);
@@ -28,7 +31,9 @@ function DarkLightModeDecider() {
             (vsItem) => e.name === vsItem.name
           );
           const visualModeLen = visualModes.length;
-          return visualModes[(currentIndex + 1) % visualModeLen];
+          const nextMode = visualModes[(currentIndex + 1) % visualModeLen];
+          localStorage.setItem("visualMode", nextMode.name);
+          return nextMode;
         });
       }}
       className="primary-btn"
