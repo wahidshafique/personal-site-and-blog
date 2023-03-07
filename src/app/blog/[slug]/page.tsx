@@ -7,7 +7,7 @@ import styles from "@/styles/Blog.module.css";
 
 export async function generateStaticParams() {
   const blogPages = await getBlogPages();
-  return blogPages.map((e) => ({ slug: e.fileName }));
+  return blogPages?.map((e) => ({ slug: e.fileName }));
 }
 
 interface PageProps {

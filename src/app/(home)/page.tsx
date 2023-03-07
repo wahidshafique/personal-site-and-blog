@@ -3,8 +3,8 @@ import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import getBlogPages from "@/app/getBlogPages";
 
-export default function Home() {
-  const blogPages = getBlogPages();
+export default async function Home() {
+  const blogPages = await getBlogPages();
   return (
     <>
       <main className={styles.main}>
@@ -15,7 +15,7 @@ export default function Home() {
         <div>
           <p>List of pages: </p>
           <ul>
-            {blogPages.map((b) => {
+            {blogPages?.map((b) => {
               console.log(b);
               return (
                 <li key={b.path}>
